@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/wind-aa.png" type="Texture" id=1]
+[ext_resource path="res://overlap/hitbox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://wind-aa.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 6.0
+height = 38.0
+
+[node name="wind-aa" groups=["Projectiles"] instance=ExtResource( 2 )]
+collision_layer = 0
+collision_mask = 224
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2( 3, 0 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="." index="1"]
+position = Vector2( -2, 0 )
+rotation = 1.5708
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 1 )
+
+[connection signal="area_entered" from="." to="." method="_on_windaa_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_windaa_body_entered"]
