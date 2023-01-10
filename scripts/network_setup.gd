@@ -5,12 +5,12 @@ var player = load("res://scenes/netplayer.tscn")
 onready var multiplayer_config_ui = $multiplayer_config
 onready var server_ip_address = $multiplayer_config/server_ip
 onready var your_ip = $CanvasLayer/your_ip
-
+onready var xTileMap = get_parent().get_node("TileMap")
 func _ready():
 	get_tree().connect("network_peer_connected", self, "_player_connected")
 	get_tree().connect("network_peer_disconnected", self, "_player_disconnected")
 	get_tree().connect("connected_to_server", self, "_connected_to_server")	
-
+	xTileMap.hide()
 	your_ip.text = "Your local IP: " + Network.ip_address
 	
 
@@ -27,7 +27,7 @@ func _player_disconnected(id):
 func _on_create_server_pressed():
 	multiplayer_config_ui.hide()
 	Network.create_server()
-	
+	xTileMap.show()
 	instance_player(get_tree().get_network_unique_id())
 
 
@@ -41,10 +41,11 @@ func _on_join_server_pressed():
 	print("hi")
 	if server_ip_address.text:
 		multiplayer_config_ui.hide()
+		xTileMap.show()
 		Network.ip_address = server_ip_address.text
 		Network.join_server()
 		
 func instance_player(id):
-	var player_instance = Global.instance_node_at_location(player, Players, Vector2(0,0))
+	var player_instance = Global.instance_node_at_location(player, Players, Vector2(rand_range(0,1280), rand_range(0,720)))
 	player_instance.name = str(id)
 	player_instance.set_network_master(id)
