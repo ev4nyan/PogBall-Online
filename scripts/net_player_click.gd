@@ -24,20 +24,6 @@ func puppet_position_set(new_value):
 	tween.start()
 
 
-func throw_dagger(dagger_direction):
-	if DAGGER:
-		var dagger = DAGGER.instance()
-		get_tree().current_scene.add_child(dagger)
-		dagger.global_position = self.global_position
-		
-		var dagger_rotation = dagger_direction.angle()
-		dagger.rotation = dagger_rotation
-		yield(get_tree().create_timer(0.2), "timeout")
-		if is_instance_valid(dagger):
-			dagger.destroy()
-	attackTimer.start()
-
-
 func _process(delta):
 	if is_network_master():
 		

@@ -1,7 +1,7 @@
 extends Node
 
 var player = load("res://scenes/netplayer.tscn")
-
+var ball = load("res://scenes/ball.tscn")
 onready var multiplayer_config_ui = $multiplayer_config
 onready var server_ip_address = $multiplayer_config/server_ip
 onready var your_ip = $CanvasLayer/your_ip
@@ -32,6 +32,7 @@ func _on_create_server_pressed():
 
 
 
+
 func _connected_to_server():
 	yield(get_tree().create_timer(0.1), "timeout")
 	instance_player(get_tree().get_network_unique_id())
@@ -44,8 +45,13 @@ func _on_join_server_pressed():
 		xTileMap.show()
 		Network.ip_address = server_ip_address.text
 		Network.join_server()
-		
+		instance_ball()
+
 func instance_player(id):
 	var player_instance = Global.instance_node_at_location(player, Players, Vector2(rand_range(0,1280), rand_range(0,720)))
 	player_instance.name = str(id)
 	player_instance.set_network_master(id)
+	
+func instance_ball():
+	var ball_instance = Global.instance_node_at_location(ball, Players, Vector2(500,0))
+

@@ -10,5 +10,6 @@ func instance_node(node : Object, parent : Object):
 	parent.add_child(node_instance)
 	return node_instance
 
+
 func _ready():
 	pass
