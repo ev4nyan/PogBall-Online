@@ -24,6 +24,7 @@ func _ready() -> void:
 		if is_network_master():
 			velocity = velocity.rotated(player_rotation)
 			rotation = player_rotation
+			puppet_velocity = velocity
 			rset("puppet_velocity", velocity)
 			rset("puppet_rotation", rotation)
 			rset("puppet_position", global_position)
@@ -51,7 +52,7 @@ sync func destroy() -> void:
 func _on_windaa_body_entered(body):
 
 	if body.has_method("change_speed"):
-		body.change_speed(velocity, speed, 1.05)
+		body.change_speed(puppet_velocity, speed, 1.05)
 		print(body.set_collision_layer(64))
 		body.get_node("Sprite").set_texture(red_tex)
 	destroy()

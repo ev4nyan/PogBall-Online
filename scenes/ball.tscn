@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/ba2small.png" type="Texture" id=1]
 [ext_resource path="res://overlap/hurtbox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://overlap/hitbox.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/netball.gd" type="Script" id=4]
+[ext_resource path="res://scripts/netball.gd" type="Script" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 16.0
@@ -16,7 +16,7 @@ radius = 20.025
 
 [node name="Ball" type="KinematicBody2D"]
 collision_layer = 32
-collision_mask = 7
+collision_mask = 4
 script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -34,6 +34,8 @@ shape = SubResource( 2 )
 
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
 shape = SubResource( 3 )
+
+[node name="Tween" type="Tween" parent="."]
 
 [editable path="hitbox"]
 [editable path="hurtbox"]

@@ -103,22 +103,22 @@ align = 1
 placeholder_text = "ENTER IP YOU WANT TO JOIN!!!!!!"
 
 [node name="Label" type="Label" parent="network_setup/multiplayer_config"]
-margin_left = 555.0
-margin_top = 221.0
-margin_right = 883.0
-margin_bottom = 301.0
+margin_left = 396.0
+margin_top = 233.0
+margin_right = 724.0
+margin_bottom = 313.0
 text = "WELCOME TO POGBALL!!!!!!!!! I LOVE POGBALL
 MADE BY EVAN YAN WHO MADE POGBALL"
 align = 1
 valign = 1
 
-[node name="CanvasLayer" type="CanvasLayer" parent="network_setup"]
+[node name="CanvasLayer" type="CanvasLayer" parent="network_setup/multiplayer_config"]
 
-[node name="your_ip" type="Label" parent="network_setup/CanvasLayer"]
-margin_left = 266.0
-margin_top = 453.0
-margin_right = 578.0
-margin_bottom = 549.0
+[node name="your_ip" type="Label" parent="network_setup/multiplayer_config/CanvasLayer"]
+margin_left = 367.0
+margin_top = 116.0
+margin_right = 679.0
+margin_bottom = 212.0
 align = 1
 valign = 1
 
