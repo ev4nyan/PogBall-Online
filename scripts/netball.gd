@@ -20,11 +20,12 @@ func _ready():
 func change_speed(direction, speed, multiplier):
 	puppet_velocity.x += direction.x * speed * multiplier
 	puppet_velocity.y += direction.y * speed * multiplier
-
 	var magnitude = pow(puppet_velocity.x, 2) + pow(puppet_velocity.y, 2)
 	magnitude = pow(magnitude, 0.5)
 	if magnitude > 1500:
 		Shaker.shake(magnitude / 1000, magnitude / 200, magnitude / 200)
+
+
 	
 func _process(delta):
 	if get_tree().has_network_peer():
@@ -39,6 +40,7 @@ func _process(delta):
 			if puppet_collision:
 				puppet_velocity = puppet_velocity.bounce(puppet_collision.normal)
 			#rset_unreliable("puppet_velocity", puppet_velocity)
+			
 
 func puppet_position_set(new_value) -> void:
 	puppet_position = new_value
