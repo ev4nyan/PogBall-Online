@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 export(PackedScene) var DAGGER : PackedScene = preload("res://projectiles/wind-aa.tscn")
 
+onready var Shaker = $TileMap/Camera2D
 
 onready var tween = $Tween
 

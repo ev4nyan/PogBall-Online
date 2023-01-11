@@ -7,6 +7,7 @@ onready var server_ip_address = $multiplayer_config/server_ip
 onready var your_ip = $multiplayer_config/CanvasLayer/your_ip
 onready var xTileMap = get_parent().get_node("TileMap")
 func _ready():
+	randomize()
 	get_tree().connect("network_peer_connected", self, "_player_connected")
 	get_tree().connect("network_peer_disconnected", self, "_player_disconnected")
 	get_tree().connect("connected_to_server", self, "_connected_to_server")	
@@ -49,7 +50,7 @@ func _on_join_server_pressed():
 
 
 func instance_player(id):
-	var player_instance = Global.instance_node_at_location(player, Players, Vector2(rand_range(0,1280), rand_range(0,720)))
+	var player_instance = Global.instance_node_at_location(player, Players, Vector2(600, rand_range(0,720)))
 	player_instance.name = str(id)
 	player_instance.set_network_master(id)
 	

@@ -1,10 +1,12 @@
 extends Area2D
 var red_tex = preload("res://assets/ba2red.png")
+
+
 onready var destroy_timer = get_node("Destroy_timer")
 var velocity = Vector2(1, 0)
 var player_rotation
 
-export(int) var speed = 1400
+export(int) var speed = 350
 
 
 puppet var puppet_position setget puppet_position_set
@@ -52,7 +54,7 @@ sync func destroy() -> void:
 func _on_windaa_body_entered(body):
 
 	if body.has_method("change_speed"):
-		body.change_speed(puppet_velocity, speed, 1.05)
+		body.change_speed(puppet_velocity, speed, 2)
 		print(body.set_collision_layer(64))
 		body.get_node("Sprite").set_texture(red_tex)
 	destroy()

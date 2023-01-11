@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/network_setup.gd" type="Script" id=1]
 [ext_resource path="res://assets/TX Tileset Grass.png" type="Texture" id=2]
+[ext_resource path="res://scripts/camerashake.gd" type="Script" id=3]
 [ext_resource path="res://assets/TX Tileset Stone Ground.png" type="Texture" id=9]
 
 [sub_resource type="ConvexPolygonShape2D" id=4]
@@ -61,6 +62,8 @@ tile_data = PoolIntArray( -655371, 536870913, 0, -655370, 536870913, 0, -655369,
 
 [node name="Camera2D" type="Camera2D" parent="TileMap"]
 current = true
+process_mode = 0
+script = ExtResource( 3 )
 
 [node name="network_setup" type="Control" parent="."]
 anchor_right = 1.0

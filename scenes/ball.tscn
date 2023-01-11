@@ -26,16 +26,22 @@ texture = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="hitbox" parent="." instance=ExtResource( 3 )]
+collision_layer = 0
+monitorable = false
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 shape = SubResource( 2 )
 
 [node name="hurtbox" parent="." instance=ExtResource( 2 )]
+collision_layer = 224
+collision_mask = 0
 
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
 shape = SubResource( 3 )
 
 [node name="Tween" type="Tween" parent="."]
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 
 [editable path="hitbox"]
 [editable path="hurtbox"]
